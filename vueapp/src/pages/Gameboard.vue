@@ -17,7 +17,7 @@
     </header>
 
     <body class="body">
-    
+
     </body>
   </div>
 </template>

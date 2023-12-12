@@ -5,20 +5,23 @@ const name = 'App';
 
 <template>
   <div class="div">
-    <img alt="spade" class="spade" src="./assets/spade.svg" width="200" height="200" />
-    <img alt="heart" class="heart" src="./assets/heart.svg" width="200" height="200" />
-    <img alt="diamond" class="diamond" src="./assets/diamond.svg" width="200" height="200" />
-    <img alt="club" class="club" src="./assets/club.svg" width="200" height="200" />
-    
-    <header class="header">
-      
-      <img alt="cardhub-logo" class="logo" src="./assets/logo.svg" width="200" height="200" />
-      <h1 class="welcome">Welcome to CardHub!</h1>
-      </header>
+<!--    <img alt="spade" class="spade" src="./assets/spade.svg" width="200" height="200" />-->
+<!--    <img alt="heart" class="heart" src="./assets/heart.svg" width="200" height="200" />-->
+<!--    <img alt="diamond" class="diamond" src="./assets/diamond.svg" width="200" height="200" />-->
+<!--    <img alt="club" class="club" src="./assets/club.svg" width="200" height="200" />-->
+<!--    -->
+<!--    <header class="header">-->
+<!--      -->
+<!--      <img alt="cardhub-logo" class="logo" src="./assets/logo.svg" width="200" height="200" />-->
+<!--      <h1 class="welcome">Welcome to CardHub!</h1>-->
+<!--      </header>-->
     
     <body class="body">
-      <button class="btn host-btn">Host a Game</button>
-      <router-link to="/join" class="btn join-btn">Join</router-link>
+<!--      <router-link to="/gameboard" class="btn host-btn">Host a Game</router-link>-->
+<!--&lt;!&ndash;      <router-view></router-view>&ndash;&gt;-->
+<!--    -->
+<!--&lt;!&ndash;      <button class="btn host-btn">Host a Game</button>&ndash;&gt;-->
+<!--      <router-link to="/join" class="btn join-btn">Join</router-link>-->
       <router-view></router-view>
 
     </body>
