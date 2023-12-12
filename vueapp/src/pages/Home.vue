@@ -20,7 +20,9 @@
         <button class="btn host-btn">Gameboard</button>
       </a>
     
-      <button class="btn host-btn">Host a Game</button>
+      <a href="/host">
+        <button class="btn host-btn">Host a Game</button>
+      </a>
       <a href="/join">
         <button class="btn join-btn">Join</button>
       </a>
