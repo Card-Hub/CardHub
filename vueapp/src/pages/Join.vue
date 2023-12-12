@@ -4,7 +4,7 @@
 
 <template>
   <div>
-    <img alt="cardhub-logo" class="logo" src="./assets/logo.svg" scale=".25%" />
+    <img alt="cardhub-logo" class="logo" src="../assets/logo.svg" height="100" width="100" />
   </div>
 </template>
 

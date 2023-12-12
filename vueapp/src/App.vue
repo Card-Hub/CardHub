@@ -1,21 +1,7 @@
 <script setup lang="ts">
-  import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
-  // import { ref } from 'vue';
-  import join from './pages/join.vue';
-  
-  const routes = {
-    '/pages/join': join,
-  };
-  
-  // const currentPath = ref(window.location.hash);
-  //
-  // window.addEventListener('hashchange', () => {
-  //   currentPath.value = window.location.hash;
-  // });
-  
-  // const currentView = computed(() => { return routes[currentPath.value.slice(1) || '/'] });
-//
+const name = 'App';
 </script>
+
 
 <template>
   <div class="div">
@@ -32,12 +18,8 @@
     
     <body class="body">
       <button class="btn host-btn">Host a Game</button>
-<!--      <div>-->
-      <a href="/join">
-        <button class="btn join-btn">Join</button>
-      </a>
-<!--      <component :is="currentView"/>-->
-<!--      </div>-->
+      <router-link to="/join" class="btn join-btn">Join</router-link>
+      <router-view></router-view>
 
     </body>
   </div>
@@ -91,8 +73,8 @@
     display: flex;
     flex-direction: column;
     background-color: #282828;
-    height: 97vh;
-    width: 90vw;
+    height: 100vh;
+    width: 100vw;
   }
   
   .spade {
@@ -159,6 +141,7 @@
     font-size: 20px;
     margin: 4px 2px;
     cursor: pointer;
+    border-radius: 10px;
   }
 
 
