@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+ // export class Join extends Vue { };
 </script>
 
 <template>

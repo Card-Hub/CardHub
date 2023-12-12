@@ -1,5 +1,20 @@
 <script setup lang="ts">
   import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
+  // import { ref } from 'vue';
+  import join from './pages/join.vue';
+  
+  const routes = {
+    '/pages/join': join,
+  };
+  
+  // const currentPath = ref(window.location.hash);
+  //
+  // window.addEventListener('hashchange', () => {
+  //   currentPath.value = window.location.hash;
+  // });
+  
+  // const currentView = computed(() => { return routes[currentPath.value.slice(1) || '/'] });
+//
 </script>
 
 <template>
@@ -10,14 +25,19 @@
     <img alt="club" class="club" src="./assets/club.svg" width="200" height="200" />
     
     <header class="header">
+      
       <img alt="cardhub-logo" class="logo" src="./assets/logo.svg" width="200" height="200" />
       <h1 class="welcome">Welcome to CardHub!</h1>
-
       </header>
     
     <body class="body">
       <button class="btn host-btn">Host a Game</button>
-      <button class="btn join-btn">Join</button>
+<!--      <div>-->
+      <a href="/join">
+        <button class="btn join-btn">Join</button>
+      </a>
+<!--      <component :is="currentView"/>-->
+<!--      </div>-->
 
     </body>
   </div>
