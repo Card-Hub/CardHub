@@ -1,12 +1,17 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+  import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
 </script>
 
 <template>
   <div class="div">
+    <img alt="spade" class="spade" src="./assets/spade.svg" width="200" height="200" />
+    <img alt="heart" class="heart" src="./assets/heart.svg" width="200" height="200" />
+    <img alt="diamond" class="diamond" src="./assets/diamond.svg" width="200" height="200" />
+    <img alt="club" class="club" src="./assets/club.svg" width="200" height="200" />
+    
     <header class="header">
       <img alt="cardhub-logo" class="logo" src="./assets/logo.svg" width="200" height="200" />
-      <h1>Welcome to CardHub!</h1>
+      <h1 class="welcome">Welcome to CardHub!</h1>
 
       </header>
     
@@ -14,13 +19,18 @@ import HelloWorld from './components/HelloWorld.vue'
       <button class="btn host-btn">Host a Game</button>
       <button class="btn join-btn">Join</button>
 
-<!--    <HelloWorld msg="You did it!" />-->
-<!--    </header>-->
     </body>
   </div>
 </template>
 
 <style scoped>
+  .welcome {
+    color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+  }
   .host-btn {
     background-color: darkred;
     border: none;
@@ -61,12 +71,39 @@ import HelloWorld from './components/HelloWorld.vue'
     display: flex;
     flex-direction: column;
     background-color: #282828;
-    height: 90vh;
+    height: 97vh;
     width: 90vw;
   }
   
+  .spade {
+    rotate: 225deg;
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  
+  .heart {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  
+  .diamond {
+    rotate: 315deg;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .club {
+    rotate: 315deg;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
 .header {
-    background-color: #282828;
     display: flex;
     flex-direction: column;
     padding-bottom: 40px;
