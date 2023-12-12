@@ -3,5 +3,7 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 // import join from './pages/join.vue'
+// import Gameboard from './pages/Gameboard.vue'
+import Home from './pages/Home.vue'
 
-createApp(App).mount('#app')
+createApp(Home).mount('#app')
