@@ -1,7 +1,5 @@
-import './assets/main.css'
+import { createApp } from 'vue';
+import Routing from './pages/Routing.vue';
+import router from './router';
 
-import { createApp } from 'vue'
-import App from './App.vue'
-// import join from './pages/join.vue'
-
-createApp(App).mount('#app')
+createApp(Routing).use(router).mount('#app');
