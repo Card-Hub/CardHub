@@ -37,13 +37,13 @@ public class ChatHub : Hub
     
     public override Task OnDisconnectedAsync(Exception? exception)
     {
-        if (_userConnections.TryGetValue(Context.ConnectionId, out var userConnection))
-        {
-            _userConnections.Remove(Context.ConnectionId);
-            Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", _botUser,
-                $"{userConnection.User} has left the room {userConnection.Room}");
-            SendConnectedUsers(userConnection.Room);
-        }
+        if (!_userConnections.TryGetValue(Context.ConnectionId, out var userConnection))
+            return base.OnDisconnectedAsync(exception);
+        
+        _userConnections.Remove(Context.ConnectionId);
+        Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", _botUser,
+            $"{userConnection.User} has left the room {userConnection.Room}");
+        SendConnectedUsers(userConnection.Room);
 
         return base.OnDisconnectedAsync(exception);
     }
