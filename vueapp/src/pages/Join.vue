@@ -1,6 +1,10 @@
+<!--All UI components created by Rubi Dionisio-->
+
 <script setup lang="ts">
 import { ref } from 'vue';
 
+
+// Signalr components created by Alex Mozqueda
 const roomCode = ref('');
 const playerName = ref('');
 
@@ -64,6 +68,7 @@ const closeConnection = async () => {
     console.log(e);
   }
 };
+// End Alex Mozqueda's Signalr components
 </script>
 
 <template>
@@ -84,6 +89,7 @@ const closeConnection = async () => {
         <div class="app">
           
           <h2></h2>
+<!--          Alex Created the connextion, Rubi made the UI and set the layout-->
           <hr class="line"/>
           <template v-if="connection == null">
             <Lobby @join-lobby="joinRoom"/>

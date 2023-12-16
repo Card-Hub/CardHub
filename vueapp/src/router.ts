@@ -1,9 +1,9 @@
-// router.ts
+// Rubi Dionisio Created the routing, here is the code for that
+// sources: https://vuejs.org/guide/scaling-up/routing.html
+
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 // import type { RouteRecordRaw } from 'vue-router';
 import Join from './pages/Join.vue';
-// import Home from './pages/Home.vue';
-// import Gameboard from './pages/Gameboard.vue';
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -11,7 +11,6 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Join',
         component: Join,
     },
-    // Add other routes as needed
     {
         path: '/',
         name: 'Home',
