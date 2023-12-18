@@ -43,7 +43,9 @@ const joinRoom = async (user: string, room: string) => {
 };
 
 const sendMessage = async (message: string) => {
+  console.log("im not in app send message0");
   try {
+    console.log("im not in app send message1");
     if (connection.value !== null)
       await connection.value.invoke("SendMessage", message);
   } catch (e) {
@@ -70,7 +72,7 @@ const closeConnection = async () => {
       <Lobby @join-lobby="joinRoom"/>
     </template>
     <template v-else>
-      <Chat :sendMessage="sendMessage" :messages="messages" :users="users" :closeConnection="closeConnection"/>
+      <Chat @send-message="sendMessage" :messages="messages" :users="users" :closeConnection="closeConnection"/>
     </template>
   </div>
 </template>

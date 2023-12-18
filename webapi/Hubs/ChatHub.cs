@@ -14,6 +14,7 @@ public class ChatHub : Hub
 
     public async Task SendMessage(string message)
     {
+        Console.WriteLine($"sent message: {message}");
         if (_userConnections.TryGetValue(Context.ConnectionId, out var userConnection))
         {
             await Clients.Group(userConnection.Room)
@@ -23,6 +24,7 @@ public class ChatHub : Hub
 
     public async Task JoinRoom(UserConnection userConnection)
     {
+        Console.WriteLine($"Received message:");
         await Groups.AddToGroupAsync(Context.ConnectionId, userConnection.Room);
         await Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", _botUser,
             $"{userConnection.User} has joined the room {userConnection.Room}");
