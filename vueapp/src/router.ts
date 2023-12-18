@@ -3,13 +3,13 @@
 
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 // import type { RouteRecordRaw } from 'vue-router';
-import Join from './pages/Join.vue';
+import App from './App.vue';
 
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/join',
         name: 'Join',
-        component: Join,
+        component: () => import('./pages/Join.vue'),
     },
     {
         path: '/',

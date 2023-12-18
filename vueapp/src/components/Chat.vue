@@ -2,17 +2,19 @@
 import MessageContainer from "/src/components/MessageContainer.vue";
 import { defineProps, defineEmits, ref } from 'vue';
 
+let user = ref("");
+
 const { messages } = defineProps(["messages"]);
 
 const emit = defineEmits<{
-  sendMessage: [message: string]
+  sendMessage: [user: string, message: string]
 }>()
 
 const message = ref('');
 //check what gpt said, i dont think the the parent sendmessage is being invoked by the child emits button
 const handleSubmit = () => {
   console.log('in handleSubmit, message:', message.value); // Check if this logs correctly
-  emit('sendMessage', message.value);
+  emit('sendMessage', user.value, message.value);
   message.value = '';
 };
 

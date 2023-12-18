@@ -12,19 +12,35 @@ public class ChatHub : Hub
         _userConnections = userConnections;
     }
 
-    public async Task SendMessage(string message)
+    public async Task SendMessage(string user, string message)//this may not be working properly
     {
-        Console.WriteLine($"sent message: {message}");
-        if (_userConnections.TryGetValue(Context.ConnectionId, out var userConnection))
+        // Console.WriteLine(_userConnections);//issue with sendmessage is because userConnection isnt what we want
+        Console.WriteLine($"sent message");
+        foreach (var kvp in _userConnections)
         {
-            await Clients.Group(userConnection.Room)
-                .SendAsync("ReceiveMessage", userConnection.User, message);
+            var connectionId = kvp.Key;
+            var userConnection = kvp.Value;
+
+            Console.WriteLine($"ConnectionId: {connectionId}, UserConnection: {userConnection}");
         }
+        try {
+            if (_userConnections.TryGetValue(Context.ConnectionId, out var userConnection))
+            {
+                Console.WriteLine($"sent message: {message}");
+                await Clients.Group(userConnection.Room)
+                    .SendAsync("ReceiveMessage", userConnection.User, message);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error sending message: {ex.Message}");
+        }
+
     }
 
     public async Task JoinRoom(UserConnection userConnection)
     {
-        Console.WriteLine($"Received message:");
+        Console.WriteLine($"Joined Room");
         await Groups.AddToGroupAsync(Context.ConnectionId, userConnection.Room);
         await Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", _botUser,
             $"{userConnection.User} has joined the room {userConnection.Room}");

@@ -5,7 +5,7 @@ import { defineProps, onMounted } from 'vue';
 const props = defineProps(["messages"]);
 
 const logMessage = () => {
-      console.log(props.messages.value);
+      console.log('in messesage container',props.messages.value);
     };
 
 onMounted(() => {

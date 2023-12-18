@@ -9,8 +9,10 @@ const emit = defineEmits<{
 }>()
 
 const handleSubmit = async () => {
+  console.log('in handleSubmit, lobby.vue component', user.value, room.value);
   emit("joinLobby", user.value, room.value);
 }
+
 
 // const joinRoom1 = async (user: string, room: string) => {
 //   try {

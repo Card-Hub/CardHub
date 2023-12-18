@@ -24,12 +24,14 @@ const users = ref<string[]>([])
 
 const joinRoom = async (user: string, room: string) => {
   try {
+    console.log('in joinroom join.vue');
     const joinConnection = new HubConnectionBuilder()
         .withUrl("https://localhost:7255/chat")
         .configureLogging(LogLevel.Information)
         .build();
 
     joinConnection.on("ReceiveMessage", (user: string, message: string) => {
+      console.log('im right here', message);
       messages.value.push({user, message});
     });
 
@@ -50,11 +52,14 @@ const joinRoom = async (user: string, room: string) => {
     console.log("HubConnection ERR --- " + e);
   }
 };
-
-const sendMessage = async (message: string) => {
+// messages.value.push({user, message});
+const sendMessage = async (user: string, message: string) => {
   try {
-    if (connection.value !== null)
-      await connection.value.invoke("SendMessage", message);
+    console.log('in sendmessage join.vue', message);
+    if (connection.value !== null) {
+      
+      await connection.value.invoke("sendMessage", user, message);
+    }
   } catch (e) {
     console.log(e);
   }
@@ -95,7 +100,7 @@ const closeConnection = async () => {
             <Lobby @join-lobby="joinRoom"/>
           </template>
           <template v-else>
-            <Chat :sendMessage="sendMessage" :messages="messages" :users="users" :closeConnection="closeConnection"/>
+            <Chat @send-message="sendMessage" :messages="messages" :users="users" :closeConnection="closeConnection"/>
           </template>
         </div>
 
