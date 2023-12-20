@@ -4,11 +4,12 @@ namespace webapi.Hubs;
 
 public class ChatHub : Hub
 {
-    private const string _botUser = "Bot";
-    private readonly IDictionary<string, UserConnection> _userConnections;
+    private readonly string _botUser;
+    private  IDictionary<string, UserConnection> _userConnections;
     
     public ChatHub(IDictionary<string, UserConnection> userConnections)
     {
+        _botUser = "Bot";
         _userConnections = userConnections;
         // Console.WriteLine(_userConnections.User);
     }
@@ -19,16 +20,16 @@ public class ChatHub : Hub
         Console.WriteLine($"sent message[");
         Console.WriteLine(message);
         Console.WriteLine("]poggers");
-        Console.WriteLine(_userConnections);
-        foreach (var kvp in _userConnections)
-        {
-            var connectionId = kvp.Key;
-            var userConnection = kvp.Value;
-
-            Console.WriteLine($"ConnectionId: {connectionId}, UserConnection: {userConnection}");
-        }
+        // Console.WriteLine(_userConnections);
         try {//the issue is something with _userconnect as it never passes if.
-            // Console.WriteLine(_userConnections.User);
+            Console.WriteLine("poggers2");
+            foreach (string key in _userConnections.Keys) {
+                Console.WriteLine(key);
+            }
+            foreach (UserConnection value in _userConnections.Values) {
+                Console.WriteLine(value.User);
+                Console.WriteLine(value.Room);
+            }
             if (_userConnections.TryGetValue(Context.ConnectionId, out var userConnection))
             {
                 Console.WriteLine($"in if sent message:");
@@ -45,8 +46,9 @@ public class ChatHub : Hub
 
     public async Task JoinRoom(UserConnection userConnection)
     {
-        Console.WriteLine($"Joined Room");
+        Console.WriteLine($"Joined Room2");
         await Groups.AddToGroupAsync(Context.ConnectionId, userConnection.Room);
+        _userConnections[Context.ConnectionId] = userConnection;
         await Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", _botUser,
             $"{userConnection.User} has joined the room {userConnection.Room}");
         await SendConnectedUsers(userConnection.Room);
