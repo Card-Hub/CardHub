@@ -13,6 +13,7 @@
     "predev": "node aspnetcore-https.cjs"
   },
   "dependencies": {
+    "@microsoft/signalr": "^8.0.0",
     "vue": "^3.3.10"
   },
   "devDependencies": {
