@@ -10,12 +10,16 @@ public class ChatHub : Hub
     public ChatHub(IDictionary<string, UserConnection> userConnections)
     {
         _userConnections = userConnections;
+        // Console.WriteLine(_userConnections.User);
     }
 
     public async Task SendMessage(string user, string message)//this may not be working properly
     {
         // Console.WriteLine(_userConnections);//issue with sendmessage is because userConnection isnt what we want
-        Console.WriteLine($"sent message");
+        Console.WriteLine($"sent message[");
+        Console.WriteLine(message);
+        Console.WriteLine("]poggers");
+        Console.WriteLine(_userConnections);
         foreach (var kvp in _userConnections)
         {
             var connectionId = kvp.Key;
@@ -23,10 +27,11 @@ public class ChatHub : Hub
 
             Console.WriteLine($"ConnectionId: {connectionId}, UserConnection: {userConnection}");
         }
-        try {
+        try {//the issue is something with _userconnect as it never passes if.
+            // Console.WriteLine(_userConnections.User);
             if (_userConnections.TryGetValue(Context.ConnectionId, out var userConnection))
             {
-                Console.WriteLine($"sent message: {message}");
+                Console.WriteLine($"in if sent message:");
                 await Clients.Group(userConnection.Room)
                     .SendAsync("ReceiveMessage", userConnection.User, message);
             }

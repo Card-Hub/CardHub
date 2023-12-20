@@ -57,8 +57,9 @@ const sendMessage = async (user: string, message: string) => {
   try {
     console.log('in sendmessage join.vue', message);
     if (connection.value !== null) {
-      
+      console.log('in sendmessage join.vue1', message);
       await connection.value.invoke("sendMessage", user, message);
+      console.log('in sendmessage join.vue2', message);
     }
   } catch (e) {
     console.log(e);
